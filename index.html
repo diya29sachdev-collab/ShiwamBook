@@ -1,187 +1,242 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Shiwam Book | Royal Edition</title>
+<title>Shiwam Book | Signature Royal Edition</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+
 <style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
+
 body{
-    margin:0;
-    font-family: 'Georgia', serif;
-    background: radial-gradient(circle at top, #1a1a1a 0%, #000000 70%);
-    color:white;
-    text-align:center;
+font-family:'Poppins',sans-serif;
+background:#ffffff;
+color:#111;
+overflow-x:hidden;
 }
 
-/* Logo */
+/* PRELOADER */
+#preloader{
+position:fixed;
+width:100%;
+height:100%;
+background:white;
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:9999;
+}
+.loader{
+border:5px solid #f3f3f3;
+border-top:5px solid gold;
+border-radius:50%;
+width:60px;
+height:60px;
+animation:spin 1s linear infinite;
+}
+@keyframes spin{
+100%{transform:rotate(360deg);}
+}
+
+/* HEADER */
+header{
+text-align:center;
+padding:80px 20px;
+}
+
 .logo{
-    width:280px;
-    margin-top:80px;
+width:240px;
+margin-bottom:20px;
 }
 
-/* Golden Heading */
 h1{
-    font-size:48px;
-    color:gold;
-    text-shadow:0 0 20px gold;
-    margin-top:20px;
+font-family:'Playfair Display',serif;
+font-size:52px;
+background:linear-gradient(45deg,#b8860b,#ffd700);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
 .tagline{
-    font-size:20px;
-    color:#d4af37;
-    margin-bottom:40px;
+color:#a67c00;
+margin-top:10px;
+font-size:20px;
 }
 
-/* Buttons */
+.phrase{
+margin-top:20px;
+font-size:18px;
+color:#444;
+}
+
+/* BUTTON */
 .btn{
-    display:inline-block;
-    padding:15px 40px;
-    margin:15px;
-    background:linear-gradient(45deg,#d4af37,#ffd700);
-    color:black;
-    font-weight:bold;
-    border-radius:40px;
-    text-decoration:none;
-    transition:0.4s;
+display:inline-block;
+margin:20px;
+padding:15px 40px;
+border-radius:40px;
+background:linear-gradient(45deg,#b8860b,#ffd700);
+color:white;
+font-weight:600;
+text-decoration:none;
+transition:0.4s;
+box-shadow:0 10px 25px rgba(212,175,55,0.4);
 }
 .btn:hover{
-    box-shadow:0 0 25px gold;
-    transform:scale(1.08);
+transform:translateY(-5px);
+box-shadow:0 15px 40px rgba(212,175,55,0.7);
 }
 
-/* Sections */
+/* SECTIONS */
 .section{
-    padding:70px 20px;
+padding:80px 20px;
+text-align:center;
 }
 
 .section h2{
-    color:gold;
-    font-size:36px;
-    margin-bottom:40px;
+font-size:36px;
+color:#b8860b;
+margin-bottom:50px;
 }
 
-/* Glass Cards */
+/* CARDS */
 .cards{
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:30px;
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:30px;
 }
+
 .card{
-    background:rgba(255,215,0,0.07);
-    border:1px solid gold;
-    padding:30px;
-    border-radius:15px;
-    width:260px;
-    backdrop-filter:blur(8px);
-    transition:0.4s;
+width:280px;
+padding:30px;
+border-radius:15px;
+background:white;
+border:1px solid rgba(212,175,55,0.3);
+box-shadow:0 20px 40px rgba(0,0,0,0.05);
+transition:0.4s;
+opacity:0;
+transform:translateY(40px);
 }
+
+.card.show{
+opacity:1;
+transform:translateY(0);
+}
+
 .card:hover{
-    transform:translateY(-10px);
-    box-shadow:0 0 30px rgba(255,215,0,0.4);
+border:1px solid gold;
+box-shadow:0 25px 50px rgba(212,175,55,0.4);
 }
 
-/* Counter */
+/* COUNTERS */
 .counter{
-    font-size:42px;
-    color:gold;
-    font-weight:bold;
+font-size:42px;
+color:#c5a100;
+font-weight:bold;
+margin-top:10px;
 }
 
-/* WhatsApp Buttons */
+/* FOOTER */
+footer{
+padding:40px;
+background:#f9f9f9;
+color:#777;
+}
+
+/* WHATSAPP */
 .whatsapp{
-    position:fixed;
-    right:20px;
-    width:60px;
-    height:60px;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:24px;
-    color:#fff;
-    text-decoration:none;
-    animation:pulse 2s infinite;
+position:fixed;
+right:20px;
+width:60px;
+height:60px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:24px;
+color:white;
+text-decoration:none;
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
 }
 .whatsapp1{ bottom:100px; background:#25D366; }
 .whatsapp2{ bottom:20px; background:#128C7E; }
-
-@keyframes pulse{
-0%{box-shadow:0 0 0 0 rgba(37,211,102,0.7);}
-70%{box-shadow:0 0 0 20px rgba(37,211,102,0);}
-100%{box-shadow:0 0 0 0 rgba(37,211,102,0);}
-}
-
-footer{
-    padding:40px;
-    background:black;
-    color:#aaa;
-}
 </style>
 </head>
 
 <body>
 
+<div id="preloader"><div class="loader"></div></div>
+
+<header>
 <img src="logo.jpg" class="logo">
 
 <h1>Shiwam Book</h1>
 <p class="tagline">Play Bold. Win Big.</p>
+<p class="phrase">Where Winners Are Made & Legends Are Born.</p>
 
 <a href="https://wa.me/917887830123" class="btn">Join Now</a>
 <a href="https://wa.me/918766053022" class="btn">VIP Support</a>
+</header>
 
 <div class="section">
-<h2>Why Choose Us</h2>
+<h2>Why Elite Players Choose Us</h2>
 
 <div class="cards">
 
 <div class="card">
 <h3>⚡ Instant Withdrawal</h3>
-<p>Fast & Secure Payouts within minutes.</p>
+<p>Experience lightning-fast payouts without delay.</p>
 </div>
 
 <div class="card">
 <h3>🕐 24/7 Service</h3>
-<p>Dedicated support available anytime.</p>
+<p>Round-the-clock assistance whenever you need it.</p>
 </div>
 
 <div class="card">
-<h3>💎 Fast Withdrawal</h3>
-<p>Lightning quick processing system.</p>
+<h3>🚀 Fast Processing</h3>
+<p>Advanced system ensuring quick transaction approvals.</p>
 </div>
 
 <div class="card">
-<h3>🔒 Trusted Platform</h3>
-<p>Premium secure environment for players.</p>
+<h3>🔒 Premium Security</h3>
+<p>Top-level protection for every transaction.</p>
 </div>
 
 </div>
 </div>
 
 <div class="section">
-<h2>Live Platform Stats</h2>
+<h2>Live Platform Strength</h2>
 
 <div class="counter" id="users">0</div>
-<p>Active Users</p>
+<p>Active Players</p>
 
 <div class="counter" id="payout">0</div>
 <p>Total Withdrawals Processed</p>
+
 </div>
 
 <div class="section">
-<h2>Our Sites</h2>
+<h2>Our Exclusive Sites</h2>
 
 <div class="cards">
 
 <div class="card">
-<h3>🎰 Casino Games</h3>
-<p>Live Casino • Slots • Table Games</p>
+<h3>🎰 Casino Arena</h3>
+<p>Live Casino • Slots • Premium Tables</p>
 </div>
 
 <div class="card">
-<h3>🏏 Cricket Betting</h3>
-<p>IPL • International • Live Matches</p>
+<h3>🏏 Cricket Exchange</h3>
+<p>IPL • International • Live Betting</p>
 </div>
 
 <div class="card">
@@ -193,14 +248,18 @@ footer{
 </div>
 
 <footer>
-© 2026 Shiwam Book | Royal Luxury Edition | Play Responsibly
+© 2026 Shiwam Book | Signature Royal Edition | Built For Champions
 </footer>
 
 <a href="https://wa.me/917887830123" class="whatsapp whatsapp1">💬</a>
 <a href="https://wa.me/918766053022" class="whatsapp whatsapp2">💬</a>
 
 <script>
-function animate(id, target){
+window.onload=function(){
+document.getElementById("preloader").style.display="none";
+}
+
+function animate(id,target){
 let count=0;
 let interval=setInterval(function(){
 count+=Math.ceil(target/100);
@@ -209,10 +268,20 @@ if(count>=target){
 document.getElementById(id).innerText=target;
 clearInterval(interval);
 }
-},30);
+},25);
 }
 animate("users",12500);
 animate("payout",8500000);
+
+const cards=document.querySelectorAll('.card');
+window.addEventListener('scroll',()=>{
+cards.forEach(card=>{
+const top=card.getBoundingClientRect().top;
+if(top<window.innerHeight-50){
+card.classList.add('show');
+}
+});
+});
 </script>
 
 </body>
